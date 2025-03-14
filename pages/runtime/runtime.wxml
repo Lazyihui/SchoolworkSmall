@@ -1,5 +1,8 @@
-
 <!-- runtime.wxml -->
 <view class="container">
-  进到游戏
+    <!-- 返回按钮 -->
+    <view class="back-button" bindtap="goBack">
+        <text>返回</text>
+    </view>
+    <text>游戏界面</text>
 </view>

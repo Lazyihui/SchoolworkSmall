@@ -62,5 +62,13 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+
+    // nextPage按钮绑定
+    goBack: function () {
+      wx.navigateBack({
+        delta: 1 // 返回上一级页面
+      });
     }
+  
 })

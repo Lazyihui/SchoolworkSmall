@@ -1,1 +1,21 @@
 /* pages/runtime/runtime.wxss */
+
+.container {
+    display: flex;/*弹性布局*/
+    justify-content: center;/*水平居中*/
+    align-items: center;/*垂直*/
+    height: 100vh;
+    position: relative;
+}
+  
+  /* 返回按钮样式 */
+  .back-button {
+    position: absolute; /* 绝对定位 */
+    top: 100rpx; /* 距离顶部 */
+    left: 50rpx; /* 距离左侧 */
+    padding: 10rpx 20rpx;/*边局*/
+    background-color: #f0f0f0;
+    border: 1rpx solid #ccc;
+    border-radius: 10rpx;/*椭圆*/
+    font-size: 28rpx;
+  }

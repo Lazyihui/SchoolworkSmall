@@ -3,10 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* 使容器占满整个屏幕高度 */
-  }
-  
-  .center-button {
+    height: 50vh;
+    /* 使容器占满整个屏幕高度 */
+}
+
+.center-button {
     width: 200rpx;
     height: 100rpx;
-  }
+    padding: 10rpx 20rpx;
+    background-color: #f0f0f0;
+    border: 1rpx solid #ccc;
+    border-radius: 10rpx;
+}
