@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<navigation-bar title="登入" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+    <button class="center-button" bindtap="navigateToNextPage">进入下一个页面</button>
+</view>
