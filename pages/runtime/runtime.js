@@ -20,7 +20,6 @@ Page({
 
   startGame() {
     let grid = Array(4).fill().map(() => Array(4).fill(0));//let定义局部变量
-    grid[3][0] = 4;
     this.addRandomTile(grid);
     this.addRandomTile(grid);//初始化两个随机数
     this.setData({

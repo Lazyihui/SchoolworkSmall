@@ -1,4 +1,4 @@
-/* index.wxss */
+/* index.wxss  .css*/
 .container {
     display: flex;
     justify-content: center;
@@ -8,10 +8,38 @@
 }
 
 .center-button {
-    width: 200rpx;
-    height: 100rpx;
-    padding: 10rpx 20rpx;
-    background-color: #f0f0f0;
-    border: 1rpx solid #ccc;
-    border-radius: 10rpx;
+  /* 居中 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 按钮大小 */
+  width: 200px;
+  height: 60px;
+  /* 背景和边框 */
+  background-color: transparent; /* 透明背景 */
+  border: 2px solid #000000; /* 绿色边框 */
+  border-radius: 30px; /* 圆角 */
+  /* 文字样式 */
+  color: #000000; /* 绿色文字 */
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px; /* 垂直居中 */
+
+  /* 动画效果 */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* 鼠标悬停效果 */
+.center-button:hover {
+  background-color: #93a593; /* 绿色背景 */
+  color: white; /* 白色文字 */
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6); /* 发光效果 */
+}
+
+/* 点击效果 */
+.center-button:active {
+  transform: translate(-50%, -50%) scale(0.95); /* 点击时缩小 */
 }

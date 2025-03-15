@@ -1,5 +1,5 @@
 /**app.wxss**/
 page {
     background-color: #faf8ef;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
   }

@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigation-bar title="登入" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 <view class="container">
+<!-- bindtap == Onclick -->
     <button class="center-button" bindtap="navigateToNextPage">进入游戏</button>
 </view>

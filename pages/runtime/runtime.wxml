@@ -14,13 +14,6 @@
                             {{item}}
                         </view>
                         <view wx:else class="cell"> </view>
-                        <!-- <view wx:if="{{value > 0}}" class="cell tile tile-{{value}}">
-                            {{value}}
-                        </view>
-                        <view wx:else class="cell">
-                            ({{index}},{{index}})数组下标
-                        </view> -->
-
                     </block>
                 </view>
             </block>

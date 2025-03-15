@@ -5,7 +5,8 @@
 
   ],
   "window": {
-    "navigationBarTitleText": "2048 Game"
+    "navigationBarTitleText": "2048 Game",
+    "enablePullDownRefresh": false
   }
 
 }
