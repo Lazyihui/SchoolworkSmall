@@ -43,7 +43,7 @@
     width: 70px;
     height: 70px;
     margin: 5px;
-    background-color: #cdc1b4;
+    background-color: #a87b4b;
     border-radius: 5px;
     display: flex;
     justify-content: center;/* 内容水平居中 */
@@ -51,6 +51,7 @@
     font-size: 24px;
     font-weight: bold;
 }
+
 .tile-2 { background-color: #34bd22; }
 .tile-4 { background-color: #0fff87; }
 .tile-8 { background-color: #f2b179; }

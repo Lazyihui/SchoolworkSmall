@@ -4,12 +4,15 @@
             <text>Score: {{score}}</text>
         </view>
         <view class="grid">
-            <block wx:for="{{grid}}" wx:key="index">
+            <block wx:for="{{grid}}" wx:key="i">
                 <view class="row">
                     <block wx:for="{{item}}" wx:key="index">
-                        <view class="cell {{value > 0 ? 'tile tile-' + value : ''}}">
-                            {{value > 0 ? value : ''}}
+                        <!-- block否渲染为 DOM 节点 -->
+                        <view wx:if="{{item > 0}}" class="cell tile tile-{{item}}">
+                            {{item}}
                         </view>
+                        <view wx:else class="cell">{{i}}{{j}} </view>
+
                     </block>
                 </view>
             </block>
