@@ -3,15 +3,23 @@
         <view class="score-container">
             <text>Score: {{score}}</text>
         </view>
+        <!-- 所有grid4*4 -->
         <view class="grid">
             <block wx:for="{{grid}}" wx:key="i">
+                <!-- 每一行row4 -->
                 <view class="row">
-                    <block wx:for="{{item}}" wx:key="index">
+                    <block wx:for="{{item}}" wx:key="j">
                         <!-- block否渲染为 DOM 节点 -->
                         <view wx:if="{{item > 0}}" class="cell tile tile-{{item}}">
                             {{item}}
                         </view>
-                        <view wx:else class="cell">{{i}}{{j}} </view>
+                        <view wx:else class="cell"> </view>
+                        <!-- <view wx:if="{{value > 0}}" class="cell tile tile-{{value}}">
+                            {{value}}
+                        </view>
+                        <view wx:else class="cell">
+                            ({{index}},{{index}})数组下标
+                        </view> -->
 
                     </block>
                 </view>
@@ -21,3 +29,22 @@
         <view class="back-button" bindtap="goBack"> <text>返回</text></view>
     </view>
 </view>
+
+
+<!-- for (int i = 0; i < grid.Length; i++)
+{
+    var row = grid[i];
+    Console.WriteLine("<view class=\"row\">");
+    // 内层循环：遍历当前行的每个单元格
+    for (int j = 0; j < row.Length; j++)
+    {
+        var value = row[j];
+        // 条件判断：如果 value > 0，渲染带有数字的方块
+        if (value > 0)
+            Console.WriteLine($"  <view class=\"cell tile tile-{value}\">{value}</view>");
+        // 否则，渲染空方块
+        else
+            Console.WriteLine("  <view class=\"cell\"></view>");
+    }
+    Console.WriteLine("</view>");
+} -->
