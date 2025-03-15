@@ -9,12 +9,16 @@ Page({
     score: 0,
   },
 
+  transpose(grid) {
+    // ok
+    return grid[0].map((_, i) => grid.map(row => row[i]));
+  },
   /**
    * 生命周期函数--监听页面加载
    */
 
   onLoad(options) {
-      console.log(this.data.grid,this.data.score);
+    console.log(this.data.grid, this.data.score);
     this.startGame();
   },
 
@@ -47,15 +51,15 @@ Page({
     }
   },
 
-  onTouchStart(e) {
-    this.touchStartX = e.touches[0].clientX;
-    this.touchStartY = e.touches[0].clientY;
+  onTouchStart(event) {
+    this.touchStartX = event.touches[0].clientX;
+    this.touchStartY = event.touches[0].clientY;
     console.log(this.touchStartX, this.touchStartY);
   },
 
-  onTouchEnd(e) {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
+  onTouchEnd(event) {
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
     const dx = touchEndX - this.touchStartX;
     const dy = touchEndY - this.touchStartY;
     if (Math.abs(dx) > Math.abs(dy)) {
@@ -112,34 +116,39 @@ Page({
   },
 
   slideAndMerge(grid) {
-    // 逐行处理ok
-    let newGrid = Array(4).fill().map(() => Array(4).fill(0));
+    let newGrid = Array(4).fill().map(() => Array(4).fill(0)); // 初始化 newGrid
     let newScore = this.data.score; // 初始化 newScore
+
     for (let i = 0; i < 4; i++) {
-      let col = 0;
+      let col = 0;//col是新的列数
       for (let j = 0; j < 4; j++) {
+
         if (grid[i][j] !== 0) {
+          // 三种情况
           if (newGrid[i][col] === 0) {
+            // 移动
             newGrid[i][col] = grid[i][j];
+
           } else if (newGrid[i][col] === grid[i][j]) {
+            // 相同合并
             newGrid[i][col] *= 2;
             newScore += newGrid[i][col]; // 更新 newScore
             col++;
+
           } else {
+            // 不同则将col移动到下一列(循环)，
             col++;
             newGrid[i][col] = grid[i][j];
           }
         }
       }
+
     }
-    this.setData({ score: newScore }); // 更新 score
+    this.setData({ score: newScore }); // 更新 score和格子
     return newGrid;
   },
 
-  transpose(grid) {
-    // ok
-    return grid[0].map((_, i) => grid.map(row => row[i]));
-  },
+
 
   gridsEqual(grid1, grid2) {
     for (let i = 0; i < 4; i++) {
@@ -202,11 +211,11 @@ Page({
     this.startGame();
     this.setData({ score: 0 }); // 重置 score
   },
-  //  nextPage按钮绑定
-  goBack: function () {
-    wx.navigateBack({
-      delta: 1 // 返回上一级页面
-    });
-  }
+
+  // goBack: function () {
+  //   wx.navigateBack({
+  //     delta: 1 // 返回上一级页面
+  //   });
+  // }
 
 })
