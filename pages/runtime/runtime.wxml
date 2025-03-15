@@ -1,23 +1,20 @@
-<!-- runtime.wxml -->
-<!-- 返回按钮 -->
-<view class="container">
-    <view class="score-container"> <text>Score:{{score}} </text></view>
-    <!-- 网格 -->
-    <view class="grid">
-        <!-- for循环 -->
-        <block wx:for="{{grip}}" wx:key="index">
-            <!-- 网格每一行 -->
-            <view class="row">
-                <!--  循环每一行(两层循环) -->
-                <block wx:for="{{item}}" wx:key="index">
-                    <!--  如果 value 大于 0则为单元格添加tile和tile-{value}类用于显示不同数值的方块样式。-->
-                    <view class="cell {{value > 0 ? 'tile tile-' + value : ''}}">
-                        {{value > 0 ? value : ''}}
-                    </view>
-                </block>
-            </view>
-        </block>
+<view bindtouchstart="onTouchStart" bindtouchend="onTouchEnd">
+    <view class="container">
+        <view class="score-container">
+            <text>Score: {{score}}</text>
+        </view>
+        <view class="grid">
+            <block wx:for="{{grid}}" wx:key="index">
+                <view class="row">
+                    <block wx:for="{{item}}" wx:key="index">
+                        <view class="cell {{value > 0 ? 'tile tile-' + value : ''}}">
+                            {{value > 0 ? value : ''}}
+                        </view>
+                    </block>
+                </view>
+            </block>
+        </view>
+        <view class="restart-button" bindtap="restartGame">Restart</view>
+        <view class="back-button" bindtap="goBack"> <text>返回</text></view>
     </view>
-    <view class="restart-button" bindtap="restartGame">Restart</view>
-    <view class="back-button" bindtap="goBack"> <text>返回</text></view>
 </view>
