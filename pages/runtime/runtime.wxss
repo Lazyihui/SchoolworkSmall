@@ -2,8 +2,8 @@
 /* 返回按钮样式 */
 .back-button {
     position: absolute;/* 绝对定位 */
-    top: 100rpx;  /* 距离顶部 */
-    left: 50rpx; /* 距离左侧 */
+    top: 20rpx;  /* 距离顶部 */
+    left: 30rpx; /* 距离左侧 */
     padding: 10rpx 20rpx;  /*边局*/
     background-color: #f0f0f0;
     border: 1rpx solid #ccc;
@@ -13,22 +13,47 @@
 .restart-button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #66c716;
     color: white;
     border-radius: 5px;
     font-size: 18px;
-    
+    /* 背景和边框 */
+  background-color: transparent; /* 透明背景 */
+  border: 2px solid #000000; /* 绿色边框 */
+  border-radius: 30px; /* 圆角 */
+  /* 文字样式 */
+  color: #000000; /* 绿色文字 */
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px; /* 垂直居中 */
+
+  /* 动画效果 */
+  transition: all 0.3s ease;
 }
+
+  
 .container {
     display: flex;/* 和untiy的content size Fitter一个效果 */
     flex-direction: column;
     align-items: center;
-    padding: 100px;
+    padding: 60px;
 }
-.score-container {
-    margin-bottom: 10px;/* 下边距 */
+.header {
+    align-items: center;
+    width: 100;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #776e65;
+  }
+  .score-container {
     font-size: 24px;
-}
+    font-weight: bold;
+    color: #776e65;
+  }
 .grid {
     display: flex;
     flex-direction: column;

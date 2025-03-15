@@ -1,8 +1,11 @@
 <view bindtouchstart="onTouchStart" bindtouchend="onTouchEnd">
     <view class="container">
+        <view class="header">
+        <text class="title">2048</text>
         <view class="score-container">
             <text>Score: {{score}}</text>
         </view>
+    </view>
         <!-- 所有grid4*4 -->
         <view class="grid">
             <block wx:for="{{grid}}" wx:key="i">
