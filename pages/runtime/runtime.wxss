@@ -68,7 +68,7 @@
     width: 70px;
     height: 70px;
     margin: 5px;
-    background-color: #837461f5;
+    background-color: #cdc1b4;
     border-radius: 5px;
     display: flex;
     justify-content: center;/* 内容水平居中 */
@@ -77,8 +77,12 @@
     font-weight: bold;
 }
 
-.tile-2 { background-color: #34bd22; }
-.tile-4 { background-color: #0fff87; }
+.tile-2 { background-color: #eee4da;
+    animation: appear 0.1s ease;
+}
+.tile-4 { background-color: #a5978a; 
+    animation: appear 0.1s ease;
+}
 .tile-8 { background-color: #f2b179; }
 .tile-16 { background-color: #f59563; }
 .tile-32 { background-color: #f67c5f; }
@@ -88,3 +92,12 @@
 .tile-512 { background-color: #edc850; }
 .tile-1024 { background-color: #edc53f; }
 .tile-2048 { background-color: #edc22e; }
+/* 自定义动画效果 */
+    @keyframes appear {
+        from {
+        transform: scale(0);
+        }
+        to {
+        transform: scale(1);
+        }
+    }
