@@ -60,18 +60,14 @@ Page({
     if (Math.abs(dx) > Math.abs(dy)) {
       if (dx > 0) {
         this.moveRight();
-        console.log("right");
       } else {
         this.moveLeft();
-        console.log("left");
       }
     } else {
       if (dy > 0) {
         this.moveDown();
-        console.log("down");
       } else {
         this.moveUp();
-        console.log("up");
       }
     }
   },
@@ -82,6 +78,8 @@ Page({
     if (this.gridsEqual(grid, newGrid)) return;
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
+    console.log(grid);
+
   },
 
   moveRight() {
@@ -90,6 +88,8 @@ Page({
     if (this.gridsEqual(grid, newGrid)) return;
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
+    console.log(grid);
+
   },
 
   moveUp() {
@@ -106,6 +106,8 @@ Page({
     if (this.gridsEqual(grid, newGrid)) return;
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
+    console.log(grid);
+
   },
 
   slideAndMerge(grid) {
