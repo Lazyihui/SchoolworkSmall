@@ -20,7 +20,7 @@
     
 }
 .container {
-    display: flex;
+    display: flex;/* 和untiy的content size Fitter一个效果 */
     flex-direction: column;
     align-items: center;
     padding: 100px;
@@ -43,7 +43,7 @@
     width: 70px;
     height: 70px;
     margin: 5px;
-    background-color: #a87b4b;
+    background-color: #837461f5;
     border-radius: 5px;
     display: flex;
     justify-content: center;/* 内容水平居中 */

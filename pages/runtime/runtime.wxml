@@ -26,9 +26,9 @@
             </block>
         </view>
         <view class="restart-button" bindtap="restartGame">Restart</view>
-        <view class="back-button" bindtap="goBack"> <text>返回</text></view>
     </view>
 </view>
+<view class="back-button" bindtap="goBack"> <text>返回</text></view>
 
 
 <!-- for (int i = 0; i < grid.Length; i++)
