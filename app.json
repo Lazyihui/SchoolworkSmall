@@ -2,11 +2,18 @@
   "pages": [
     "pages/index/index",
     "pages/runtime/runtime"
-
   ],
   "window": {
     "navigationBarTitleText": "2048 Game",
     "enablePullDownRefresh": false
-  }
+  },
 
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }
