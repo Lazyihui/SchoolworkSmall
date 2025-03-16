@@ -7,8 +7,15 @@ Page({
   data: {
     grid: Array(4).fill().map(() => Array(4).fill(0)),// 4*4的二维数组
     score: 0,
+    //   const grid1 = [],
+    // for (let i = 0; i < 4; i++) {
+    //   grid1[i] = []; // 初始化每一行
+    //   for (let j = 0; j < 4; j++) {
+    //     grid1[i][j] = 0; // 初始化每个元素为 0
+    //   }
+    // }
   },
-
+  // 数组下标转换（1,2）->（2,1）
   transpose(grid) {
     // ok
     return grid[0].map((_, i) => grid.map(row => row[i]));
@@ -84,16 +91,19 @@ Page({
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
     console.log(grid);
+    checkGameOver(grid);
 
   },
 
   moveRight() {
     let grid = this.data.grid;
+    // abcd->dcba
     let newGrid = this.slideAndMerge(grid.map(row => row.slice().reverse())).map(row => row.reverse());
     if (this.gridsEqual(grid, newGrid)) return;
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
     console.log(grid);
+    checkGameOver(grid);
 
   },
 
@@ -103,6 +113,8 @@ Page({
     if (this.gridsEqual(grid, newGrid)) return;
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
+    checkGameOver(grid);
+
   },
 
   moveDown() {
@@ -112,10 +124,12 @@ Page({
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
     console.log(grid);
+    checkGameOver(grid);
 
   },
 
   slideAndMerge(grid) {
+    // 左滑动
     let newGrid = Array(4).fill().map(() => Array(4).fill(0)); // 初始化 newGrid
     let newScore = this.data.score; // 初始化 newScore
 
@@ -158,6 +172,32 @@ Page({
     }
     return true;
   },
+  // 检查游戏是否结束
+  checkGameOver(grid) {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        if (grid[i][j] === 0) return false;
+        if (i < 3 && grid[i][j] === grid[i - 1][j]) return false;
+        if (j < 3 && grid[i][j] === grid[i][j - 1]) return false;
+      }
+    }
+    wx.showModal({
+      title: '游戏结束',
+      content: '没有可以移动的格子了，是否重新开始？',
+      showCancel: false,
+      // 类似匿名函数委托
+      success: (res) => {
+        if (res.confirm) {
+          this.restartGame();
+          console.log('用户点击了确定');
+        } else if (res.cancel) {
+          console.log('用户点击了取消');
+        }
+      },
+    });
+    return true;
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
