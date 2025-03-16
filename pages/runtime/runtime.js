@@ -7,6 +7,7 @@ Page({
   data: {
     grid: Array(4).fill().map(() => Array(4).fill(0)),// 4*4的二维数组
     score: 0,
+    audioContext: null,
     //   const grid1 = [],
     // for (let i = 0; i < 4; i++) {
     //   grid1[i] = []; // 初始化每一行
@@ -25,8 +26,22 @@ Page({
    */
 
   onLoad(options) {
-    console.log(this.data.grid, this.data.score);
+    this.audioInit();
     this.startGame();
+  },
+
+  audioInit() {
+    const audioContext = wx.createInnerAudioContext();
+    this.audioContext = audioContext;
+    if (audioContext == null) {
+      console.log("audioContext is null");
+    };
+    audioContext.src = 'assets/music.mp3';
+    if (audioContext.src == null) {
+      console.log("audioContext.src is null");
+    };
+    audioContext.loop = true;
+    audioContext.play();
   },
 
   startGame() {
@@ -91,8 +106,6 @@ Page({
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
     console.log(grid);
-    checkGameOver(grid);
-
   },
 
   moveRight() {
@@ -103,7 +116,6 @@ Page({
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
     console.log(grid);
-    checkGameOver(grid);
 
   },
 
@@ -113,8 +125,6 @@ Page({
     if (this.gridsEqual(grid, newGrid)) return;
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
-    checkGameOver(grid);
-
   },
 
   moveDown() {
@@ -124,7 +134,7 @@ Page({
     this.addRandomTile(newGrid);
     this.setData({ grid: newGrid });
     console.log(grid);
-    checkGameOver(grid);
+  
 
   },
 
@@ -172,31 +182,8 @@ Page({
     }
     return true;
   },
+
   // 检查游戏是否结束
-  checkGameOver(grid) {
-    for (let i = 0; i < 4; i++) {
-      for (let j = 0; j < 4; j++) {
-        if (grid[i][j] === 0) return false;
-        if (i < 3 && grid[i][j] === grid[i - 1][j]) return false;
-        if (j < 3 && grid[i][j] === grid[i][j - 1]) return false;
-      }
-    }
-    wx.showModal({
-      title: '游戏结束',
-      content: '没有可以移动的格子了，是否重新开始？',
-      showCancel: false,
-      // 类似匿名函数委托
-      success: (res) => {
-        if (res.confirm) {
-          this.restartGame();
-          console.log('用户点击了确定');
-        } else if (res.cancel) {
-          console.log('用户点击了取消');
-        }
-      },
-    });
-    return true;
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -223,7 +210,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    this.audioContext.destroy();
   },
 
   /**
